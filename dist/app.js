@@ -13,7 +13,10 @@ const webhook_1 = __importDefault(require("./models/webhook"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
-    origin: 'http://localhost:3000',
+    origin: ['https://stocks-academy.vercel.app', 'http://localhost:3000'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
 }));
 // Stripe Webhook requires raw body parsing
 app.use('/webhook', webhook_1.default);
